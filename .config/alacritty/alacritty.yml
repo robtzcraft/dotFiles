@@ -38,7 +38,8 @@ scrolling:
 
 font:
   normal:
-    family: 'JetBrains Mono'
+    family: 'SF Mono'
+    # family: 'JetBrains Mono'
     style: semibold
   size: 6.0
 

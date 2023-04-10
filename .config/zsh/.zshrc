@@ -4,6 +4,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
+#ZSH_THEME="robbyrussell"
+
 ZSH_THEME="typewritten"
 TYPEWRITTEN_SYMBOL="$"
 TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"
@@ -99,6 +102,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+JAVA_HOME=$(dirname $(readlink -f $(which java)))
+JAVA_HOME=$(realpath "$JAVA_HOME"/../)
+export JAVA_HOME
 
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
-export PATH=$JAVA_HOME/bin:$PATH 
+export PATH="/opt/flutter/bin:$PATH"
+
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+export PATH=$PATH:$ANDROID_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
