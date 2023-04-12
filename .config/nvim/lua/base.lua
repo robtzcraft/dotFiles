@@ -11,7 +11,6 @@ vim.opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = true
@@ -46,32 +45,16 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
 
-----------------------------------------------
---                 GRUVBOX                  --
---                                          --
---       ellisonleao/gruvbox.nvim           --
---                                          --
-----------------------------------------------
 
-vim.o.background = "dark"           -- or "light" for light mode
+
+-----------------------------
+-- COLORSCHEME [ Gruvbox ] --
+-----------------------------
+
+vim.o.background = "dark"
 
 require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = true,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {},
-  dim_inactive = false,
   transparent_mode = true,
 })
 
-vim.cmd( [[ colorscheme gruvbox ]] )
-
+vim.cmd("colorscheme gruvbox")

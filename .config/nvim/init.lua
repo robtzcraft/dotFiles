@@ -12,10 +12,9 @@ end
 
 
 return require('packer').startup { function()
-  -- Packer can manage itself
+
   use 'wbthomason/packer.nvim'
 
-  -- A collection of common configurations for Neovim's built-in language server client
   use {
     'neovim/nvim-lspconfig',
     config = [[ require('plugins/lspconfig') ]]
@@ -24,15 +23,15 @@ return require('packer').startup { function()
     'williamboman/nvim-lsp-installer',
     config = [[ require('plugins/lsp_installer_nvim') ]]
   }
-  use { -- vscode-like pictograms for neovim lsp completion items Topics
+  use {
     'onsails/lspkind-nvim',
     config = [[ require('plugins/lspkind') ]]
   }
-  use { -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
+  use {
     'nvim-lua/lsp-status.nvim',
     config = [[ require('plugins/lspstatus') ]]
   }
-  use { -- A completion plugin for neovim coded in Lua.
+  use {
     'hrsh7th/nvim-cmp',
     requires = {
       "hrsh7th/cmp-nvim-lsp",     -- nvim-cmp source for neovim builtin LSP client
@@ -51,24 +50,11 @@ return require('packer').startup { function()
     },
     config = [[ require('plugins/luasnip') ]],
   }
-  use { --  colorscheme for (neo)vim written in lua specially made for roshnivim
-    'shaeinst/roshnivim-cs',
-  }
-  use { -- Nvim Treesitter configurations and abstraction layer
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = [[ require('plugins/treesitter') ]]
-  }
-  use { -- A super powerful autopairs for Neovim. It support multiple character.
-    'windwp/nvim-autopairs',
-    config = [[ require('plugins/autopairs') ]]
-  }
 
   use { "ellisonleao/gruvbox.nvim" }
 
-  use { 'iamcco/markdown-preview.nvim' }
-end, config = {
-  -- Move to lua dir so impatient.nvim can cache it
-  compile_path = vim.fn.stdpath('config') .. '/plugin/packer_compiled.lua'
-}
+  end, config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath('config') .. '/plugin/packer_compiled.lua'
+  }
 }

@@ -1,21 +1,17 @@
 #!/bin/bash
 
+## Clearing terminal
 clear
-
 
 echo "
 
-  Installation:
+    Installation:
 
 "
-echo "Neovim environment          [1]
-"
-echo "Alacritty environment       [2]
-"
-echo "ZSH - Oh-my-zsh             [3]
-"
-echo "Exit                        [4]
-"
+echo "  Neovim environment          [1]"
+echo "  Alacritty environment       [2]"
+echo "  ZSH - Oh-my-zsh             [3]"
+echo "  Exit                        [4]"
 
 # Leer la entrada del usuario
 read -p "Ingresa tu opción: " opcion
@@ -45,26 +41,8 @@ case $opcion in
   
 
   2)
-    # ALACRITTY
-    echo "alacritty environment"
-
-    # Instalación del programa... Si no está instalado, entonces lo instala por nosotros [pausa de 5 seg. para verificar]
-    sudo pacman -Ss alacritty
-    sleep 5
-    sudo pacman -S alacritty
-
-    # Enlaces simbólicos
-    alacritty_origin="$HOME/Documents/dotFiles/.config/alacritty/alacritty.yml"
-    mkdir $HOME/.config/alacritty
-    alacritty_destination="$HOME/.config/alacritty"
-
-    ln -s "$alacritty_origin" "$alacritty_destination"
-
-    if [ $? -eq 0 ]; then
-      echo "alacritty added"
-    else
-      echo "error"
-    fi
+   
+    source ./shell_scripts/alacritty.sh
     ;;
   
 

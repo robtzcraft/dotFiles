@@ -113,3 +113,6 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
 export PATH=$PATH:$ANDROID_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+
+# Dart Web Development
+export PATH="$PATH":"$HOME/.pub-cache/bin"

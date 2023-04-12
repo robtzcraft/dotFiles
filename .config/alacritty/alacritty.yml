@@ -13,7 +13,7 @@ window:
   decorations: none
   # Valor 0.62 adaptado para KDE Plasma junto a 'Force Blur'
   # Para GNOME en valor ideal es 0.86 sin efecto Blur
-  opacity: 0.62
+  opacity: 0.96
   startup_mode: Windowed
   title: Alacritty
   dynamic_title: true
