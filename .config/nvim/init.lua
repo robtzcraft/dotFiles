@@ -10,7 +10,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-
 return require('packer').startup { function()
 
   use 'wbthomason/packer.nvim'
@@ -51,7 +50,23 @@ return require('packer').startup { function()
     config = [[ require('plugins/luasnip') ]],
   }
 
-  use { "ellisonleao/gruvbox.nvim" }
+
+
+  -- Tmux-navigator
+  use { 
+    'christoomey/vim-tmux-navigator',
+    opt = true
+  }
+ 
+
+  use { "ellisonleao/gruvbox.nvim"}
+  use({
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup()
+    end,
+  })
 
   end, config = {
     -- Move to lua dir so impatient.nvim can cache it

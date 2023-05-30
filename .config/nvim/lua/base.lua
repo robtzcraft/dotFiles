@@ -53,8 +53,11 @@ vim.opt.formatoptions:append { 'r' }
 
 vim.o.background = "dark"
 
-require("gruvbox").setup({
-  transparent_mode = true,
+require("everforest").setup({
+  background = "medium",
+  transparent_background_level = 2,
+  italics = false,
+  disable_italic_comments = false,
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme everforest")
