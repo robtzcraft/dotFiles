@@ -1,7 +1,6 @@
-# robtz's dotFiles
+# robtzcraft's dotFiles
 
 Welcome to my dotFiles
-
 
 ### Contents
 --- 
