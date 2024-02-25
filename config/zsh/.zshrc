@@ -1,13 +1,21 @@
 ### OhMyZSH
 
+## Snippet for Tmux autoload
+case $- in *i*)
+  [ -z "$TMUX" ] $$ exec tmux
+esac
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-#ZSH_THEME="robbyrussell"
+# ZSH_THEME="typewritten"
 
-ZSH_THEME="typewritten"
+# autoload -U promptinit; promptinit
+# prompt typewritten
+
+#ZSH_THEME="typewritten"
 TYPEWRITTEN_SYMBOL="$"
 TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"
 TYPEWRITTEN_ARROW_SYMBOL="➜"
@@ -70,7 +78,10 @@ zstyle ':completion:*' use-cache off
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  tmux
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,3 +125,8 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
 
 # Dart Web Development
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+fpath=($fpath "/home/robtzcraft/.zfunctions")
+
+# Set typewritten ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt typewritten
