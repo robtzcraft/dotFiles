@@ -1,4 +1,4 @@
-after/plugins/*
 plugin/*
+nvim/test_files/
 
 CHANGELOG.md
