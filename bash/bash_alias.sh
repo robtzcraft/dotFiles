@@ -7,7 +7,7 @@ alias r__update='sudo apt-get update && sudo apt-get upgrade'
 ## Full functions (OS only)
 r__install(){ sudo apt-get install "$@"; }
 
-r__update__packages(){ sudo apt-get --with-new-packages upgrade "$@"; }
+r__updatePackages(){ sudo apt-get --with-new-packages upgrade "$@"; }
 
 r__remove(){ sudo apt remove "$@" && r__clean; }
 

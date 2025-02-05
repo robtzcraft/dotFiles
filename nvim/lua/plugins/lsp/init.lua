@@ -34,8 +34,16 @@ lspconfig.ts_ls.setup({  -- Cambia esto por `ts_ls`
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Languages
 require('plugins.lsp.eslint')
 require('plugins.lsp.ts_ls')
 require('plugins.lsp.cpp')
+require('plugins.lsp.jdtls')
+-- require('plugins.lsp.cssls')
+require('plugins.lsp.html')
+
+-- Diagnostics
 require('plugins.lsp.diagnostics')
+
+-- CMP
 require('plugins.cmp.init')

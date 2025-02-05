@@ -70,6 +70,7 @@ cmp.setup({
         { name = 'luasnip' },  -- Snippets
     }),
     window = {
+      completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered({
         border = 'rounded',
         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
