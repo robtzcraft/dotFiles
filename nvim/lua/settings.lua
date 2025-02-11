@@ -11,6 +11,9 @@ o.cursorline = true
 o.cursorlineopt = "number"
 opt.wrap = false
 
+-- LSP
+vim.opt.pumheight = 15
+
 -- Indenting
 o.expandtab = true
 o.shiftwidth = 2

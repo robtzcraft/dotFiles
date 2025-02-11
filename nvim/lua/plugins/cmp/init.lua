@@ -70,14 +70,20 @@ cmp.setup({
         { name = 'luasnip' },  -- Snippets
     }),
     window = {
-      completion = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered({
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        scrollbar = true, -- Habilita la barra de desplazamiento
+      }),
       documentation = cmp.config.window.bordered({
-        border = 'rounded',
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        scrollbar = true, -- Habilita la barra de desplazamiento
       }),
     },
     view = {
       entries = { name = 'custom', selection_order = 'near_cursor' },
+      docs = {
+        auto_open = true,
+      }
     },
     formatting = {
       fields = { 'abbr', 'kind' },
