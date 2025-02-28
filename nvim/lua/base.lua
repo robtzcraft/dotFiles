@@ -16,6 +16,9 @@ vim.api.nvim_set_keymap('n', '<Leader>n', ':BufferLineCycleNext<CR>', { noremap 
 -- Mapear <Leader>p para ir al buffer anterior
 vim.api.nvim_set_keymap('n', '<Leader>p', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-p>', ':wincmd p<CR>', { noremap = true, silent = true })
+
 -- Mapear <Leader>1, <Leader>2, etc. para cambiar a buffers específicos
 for i = 1, 9 do
     vim.api.nvim_set_keymap('n', '<Leader>' .. i, ':BufferLineGoToBuffer ' .. i .. '<CR>', { noremap = true, silent = true })

@@ -1,15 +1,16 @@
 ## Common alias
 alias ..='cd ../'
 alias ll='ls -alF --color=auto'
-alias r__clean='sudo apt autoremove --dry-run && sudo apt autoremove'
-alias r__update='sudo apt-get update && sudo apt-get upgrade'
+alias r__clean='yay -Rns $(yay -Qdtq) && sudo pacman -Rsn $(pacman -Qdtq)'
+alias r__update='yay -Syyu'
+alias r__restartWiFi='iwctl station wlan0 disconnect'
 
 ## Full functions (OS only)
-r__install(){ sudo apt-get install "$@"; }
+r__install(){ yay -S "$@"; }
 
 r__updatePackages(){ sudo apt-get --with-new-packages upgrade "$@"; }
 
-r__remove(){ sudo apt remove "$@" && r__clean; }
+r__remove(){ yay -Rsn "$@" && r__clean; }
 
 r__fullCommands(){
 	echo "--Full-Commands--"

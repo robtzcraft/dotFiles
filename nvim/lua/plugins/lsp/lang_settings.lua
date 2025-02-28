@@ -150,3 +150,35 @@ lspconfig.eslint.setup({
     },
 })
 -- }}}
+
+-- Python
+-- {{{
+lspconfig.pyright.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local opts = { noremap = true, silent = true }
+  end,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  settings = {
+    eslint = {
+      enable = true,
+    },
+  },
+})
+-- }}}
+
+-- LUA
+-- {{{
+lspconfig.lua_ls.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local opts = { noremap = true, silent = true }
+  end,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  settings = {
+    eslint = {
+      enable = true,
+    },
+  },
+})
+-- }}}

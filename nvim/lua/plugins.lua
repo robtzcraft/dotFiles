@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {	
   -- ColorScheme
   'shaunsingh/nord.nvim',
+  'ellisonleao/gruvbox.nvim',
   
   -- SyntaxScheme (improvement)
   'nvim-treesitter/nvim-treesitter',
@@ -35,7 +36,9 @@ local plugins = {
   'hrsh7th/cmp-nvim-lsp',
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
-  'saadparwaiz1/cmp_luasnip'
+  'saadparwaiz1/cmp_luasnip',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
 }
 
 -- Options

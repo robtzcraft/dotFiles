@@ -27,7 +27,7 @@ o.smartcase = true
 o.mouse = "a"
 
 -- Numbers
-o.number = false
+o.number = true
 o.numberwidth = 1
 o.ruler = false
 

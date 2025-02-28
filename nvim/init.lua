@@ -4,10 +4,11 @@ vim.g.mapleader = ' '
 vim.opt.foldmethod="indent"
 vim.opt.foldmethod="marker"
 
-require('settings')           -- IDE settings
-require('base')
+require('./settings')           -- IDE settings
+require('./base')
 
 require('plugins')
+require('./plugins/mason-config')
 require('./plugins/nord')
 -- require('./plugins/bufferline')
 require('./plugins/lualine')
