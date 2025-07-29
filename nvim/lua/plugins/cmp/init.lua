@@ -97,7 +97,6 @@ cmp.setup({
 
 -- Snippets
 -- cmp/snippets.lua
-local luasnip = require('luasnip')
 
 -- Configurar snippets para React
 luasnip.add_snippets('javascript', {

@@ -1,7 +1,6 @@
 ## Common alias
 alias ..='cd ../'
 alias ll='ls -alF --color=auto'
-alias r__clean='yay -Rns $(yay -Qdtq) && sudo pacman -Rsn $(pacman -Qdtq)'
 alias r__update='yay -Syyu'
 alias r__restartWiFi='iwctl station wlan0 disconnect'
 
@@ -10,7 +9,7 @@ r__install(){ yay -S "$@"; }
 
 r__updatePackages(){ sudo apt-get --with-new-packages upgrade "$@"; }
 
-r__remove(){ yay -Rsn "$@" && r__clean; }
+r__clean(){ yay -Rsn "$@" && yay -Rsn $(yay -Qdtq) && sudo pacman -Rsn $(pacman -Qdtq); }
 
 r__fullCommands(){
 	echo "--Full-Commands--"
@@ -29,7 +28,7 @@ r__gcc(){
 		echo "Error: Not file found"
 		return 1
 	fi
-	g++ "$1" -o bash_out_cpp
+	g++ "$1" -lstdc++ -o bash_out_cpp
 	if [ $? -eq 0 ]; then
 		echo "Succeful Compilation"
 		./bash_out_cpp

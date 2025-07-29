@@ -13,24 +13,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
-local plugins = {	
+local plugins = {
+
   -- ColorScheme
-  'shaunsingh/nord.nvim',
   'ellisonleao/gruvbox.nvim',
-  
-  -- SyntaxScheme (improvement)
-  'nvim-treesitter/nvim-treesitter',
 
   -- StatusLine
   'nvim-lualine/lualine.nvim',
-  
+
   -- Icons
   'nvim-tree/nvim-web-devicons',
-  
-  -- Tree
-  'nvim-tree/nvim-tree.lua',							-- nvim-tree
 
-  -- LSP stuff
+    -- LSP stuff
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',

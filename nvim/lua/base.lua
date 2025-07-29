@@ -1,25 +1,30 @@
 
--- Mapear <Leader>e para abrir/cerrar nvim-tree
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+local opt = vim.opt
+local o = vim.o
+local g = vim.g
 
--- Mapear <Leader>t para abrir una nueva pestaña
-vim.api.nvim_set_keymap('n', '<Leader>t', ':tabnew<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', ':tabnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-h>', ':tabprev<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-w>', ':tabclose<CR>', { noremap = true, silent = true })
+-- Options [vim.opt]
+o.laststatus = 3
+o.showmode = false
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.cursorlineopt = "number"
+o.expandtab = true
+o.shiftwidth = 4
+o.smartindent = true
+o.tabstop = 4
+o.softtabstop = 4
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
+o.number = true
+o.numberwidth = 1
+o.ruler = false
 
--- Alternar nvim-tree
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
--- Mapear <Leader>n para ir al siguiente buffer
-vim.api.nvim_set_keymap('n', '<Leader>n', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+opt.wrap = false
 
--- Mapear <Leader>p para ir al buffer anterior
-vim.api.nvim_set_keymap('n', '<Leader>p', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-p>', ':wincmd p<CR>', { noremap = true, silent = true })
-
--- Mapear <Leader>1, <Leader>2, etc. para cambiar a buffers específicos
-for i = 1, 9 do
-    vim.api.nvim_set_keymap('n', '<Leader>' .. i, ':BufferLineGoToBuffer ' .. i .. '<CR>', { noremap = true, silent = true })
-end
+-- Providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0

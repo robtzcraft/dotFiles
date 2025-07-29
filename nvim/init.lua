@@ -1,18 +1,11 @@
 
-vim.g.mapleader = ' '
-
-vim.opt.foldmethod="indent"
-vim.opt.foldmethod="marker"
-
+require('./base')		-- nvim confing [not IDE or controls]
 require('./settings')           -- IDE settings
-require('./base')
+
 
 require('plugins')
 require('./plugins/mason-config')
-require('./plugins/nord')
--- require('./plugins/bufferline')
+require('./plugins/gruvbox')
 require('./plugins/lualine')
-require('./plugins/treesitter')
-require('./plugins/nvim-tree')
 
 require('./plugins/lsp/init')
