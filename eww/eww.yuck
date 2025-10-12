@@ -1,0 +1,65 @@
+;; Data
+(deflisten battery :interval "10s" "bash ~/.config/eww/scripts/battery.sh")
+(deflisten music :initial "" "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+(defpoll volume :interval "1s" "scripts/getvol")
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+
+;; TOPBAR
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+    :y "4px"
+    :width "99%"
+    :height "10px"
+  :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (bar))
+
+;; Full bar structure
+(defwidget bar []
+  (centerbox :orientation "h"
+    (music)
+    (workspaces)
+    (sidestuff)
+  ))
+
+(defwidget sidestuff []
+  (box :class "sidestuff container" :orientation "h" :space-evenly false :halign "end"
+    (label :text "${battery} ")
+    (metric :label "󰕾" :value volume :onchange "amixer -D pulse sset Master {}%")
+    (metric :label "󰍛" :value {EWW_RAM.used_mem_perc} :onchange "")
+    (metric :label "Free Disk" :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)} :onchange "")
+  time))
+
+(defwidget workspaces []
+  (box :class "workspaces container"
+    :orientation "h"
+    :space-evenly true
+    :halign "start"
+    :spacing 10
+    (button :onclick "hyprctl dispatch workspace 1" "󰣇 ")
+    (button :onclick "hyprctl dispatch workspace 2" " ")
+    (button :onclick "hyprctl dispatch workspace 3" "󰖟 ")
+    (button :onclick "hyprctl dispatch workspace 4" " ")
+    (button :onclick "hyprctl dispatch workspace 5" " ")
+    (button :onclick "hyprctl dispatch workspace 6" " ")
+  ))
+
+(defwidget music []
+  (box :class "music container"
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+  {music != "" ? "🎵${music}" : ""}))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+    :class "metric"
+    :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+      :max 101
+      :active {onchange != ""}
+      :value value
+    :onchange onchange)))

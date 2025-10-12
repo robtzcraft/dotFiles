@@ -6,5 +6,14 @@ Welcome to my dotFiles
 
 ### Contents
 --- 
-* NeoVim config
-* BASH config
+
+### Configs for:
+
+* Bash / ZSH
+* Neovim
+* Kitty (terminal)
+* Hypr environment
+    * Eww
+    * Hyprpaper
+    * Hyprlock
+    

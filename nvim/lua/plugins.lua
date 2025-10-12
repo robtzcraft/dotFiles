@@ -17,6 +17,7 @@ local plugins = {
 
   -- ColorScheme
   'ellisonleao/gruvbox.nvim',
+  'shaunsingh/nord.nvim',
 
   -- StatusLine
   'nvim-lualine/lualine.nvim',
