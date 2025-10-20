@@ -3,6 +3,10 @@
 (deflisten music :initial "" "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 (defpoll volume :interval "1s" "scripts/getvol")
 (defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+(defpoll current_ws :interval "1s" "hyprctl activeworkspace -j | jq -r .id")
+
+;; Moficar para que function con wttr.in
+(defpoll weather :interval "10m" :initial "🌡️ --°C" `curl -s "https://wttr.in/20.050062574020615,-97.05333783044921?format=1"`)
 
 ;; TOPBAR
 (defwindow bar
@@ -19,7 +23,7 @@
 ;; Full bar structure
 (defwidget bar []
   (centerbox :orientation "h"
-    (music)
+    (weather-widget)
     (workspaces)
     (sidestuff)
   ))
@@ -38,20 +42,19 @@
     :space-evenly true
     :halign "start"
     :spacing 10
-    (button :onclick "hyprctl dispatch workspace 1" "󰣇 ")
-    (button :onclick "hyprctl dispatch workspace 2" " ")
-    (button :onclick "hyprctl dispatch workspace 3" "󰖟 ")
-    (button :onclick "hyprctl dispatch workspace 4" " ")
-    (button :onclick "hyprctl dispatch workspace 5" " ")
-    (button :onclick "hyprctl dispatch workspace 6" " ")
+    (button :class {current_ws == 1 ? "active" : ""} :onclick "hyprctl dispatch workspace 1" "󰣇 ")
+    (button :onclick "hyprctl dispatch workspace 2" :class {current_ws == 2 ? "active" : ""} " ")
+    (button :onclick "hyprctl dispatch workspace 3" :class {current_ws == 3 ? "active" : ""} "󰖟 ")
+    (button :onclick "hyprctl dispatch workspace 4" :class {current_ws == 4 ? "active" : ""} " ")
+    (button :onclick "hyprctl dispatch workspace 5" :class {current_ws == 5 ? "active" : ""} " ")
+    (button :onclick "hyprctl dispatch workspace 6" :class {current_ws == 6 ? "active" : ""} " ")
+    (button :onclick "hyprctl dispatch workspace 7" :class {current_ws == 7 ? "active" : ""} " ")
   ))
 
-(defwidget music []
-  (box :class "music container"
-    :orientation "h"
-    :space-evenly false
-    :halign "start"
-  {music != "" ? "🎵${music}" : ""}))
+
+(defwidget weather-widget []
+  (box :class "container"
+    (label :text weather)))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"

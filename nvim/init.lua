@@ -1,5 +1,5 @@
 
-require('./base')		-- nvim confing [not IDE or controls]
+require('./base')		        -- nvim confing [not IDE or controls]
 require('./settings')           -- IDE settings
 
 require('plugins')

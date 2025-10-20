@@ -32,8 +32,9 @@ local plugins = {
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
   'saadparwaiz1/cmp_luasnip',
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
+    -- Language Servers handling
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 }
 
 -- Options

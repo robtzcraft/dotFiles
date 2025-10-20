@@ -64,6 +64,8 @@ $--aurora-purple: #b48ead;
   font-size: large;
 }
 
+// Weather
+
 // Workspaces
 .workspaces {
   padding: 6px;
@@ -73,8 +75,8 @@ $--aurora-purple: #b48ead;
   font-size: 16px;
   transition: color 200ms ease 0;
 }
-.workspaces button:active {
-  color: #bf616a;
+.workspaces button.active {
+  color: $--aurora-red;
 }
 .workspaces button:hover {
   color: $--aurora-green;

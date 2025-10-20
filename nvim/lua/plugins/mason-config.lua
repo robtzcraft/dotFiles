@@ -10,7 +10,7 @@ require('mason').setup({
 })
 
 require("mason-lspconfig").setup({
-  -- Lista de servidores de lenguaje que deseas instalar automáticamente
+  -- Language List
   ensure_installed = {
     "lua_ls",       -- Lua
     "pyright",      -- Python
@@ -22,4 +22,5 @@ require("mason-lspconfig").setup({
     "jsonls",       -- JSON
     "yamlls",       -- YAML
   },
+  automatic_installation = true
 })
