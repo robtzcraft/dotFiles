@@ -11,8 +11,8 @@ Welcome to my dotFiles
 
 * Bash / ZSH
 * Neovim
-* Kitty (terminal)
-* Hypr environment
+* Kitty
+* Hypr environment:
     * Eww
     * Hyprpaper
     * Hyprlock
