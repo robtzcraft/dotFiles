@@ -1,60 +1,111 @@
-{
-    "layer": "top",
-    "position": "top",
-    "modules-left": ["clock"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["battery", "network", "custom/power"],
-    
-    "clock": {
-        "format": "{:%H:%M}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "month",
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-            }
-        }
-    },
-    
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-            "default": "",
-            "empty": ""
+[
+    {
+        "layer": "top",
+        "position": "top",
+        "reload_style_on_change": true,
+        "modules-left": ["custom/settings", "clock"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["group/expand","network", "custom/power", "bluetooth", "battery"],
+
+
+    // Left Side
+
+        "custom/settings": {
+            "format": "",
+            "on-click": "",
+            "tooltip": true,
+            "tooltip-format": "Settings"
         },
-        "persistent-workspaces": {
-            "*": [1,2,3,4,5]
+
+        "clock": {
+            "interval": 60,
+            "format": "{:%a %d/%m/%y %H:%M}",
+            "max-length": 25,
+            "tooltip": false
         },
-        "on-click": "activate"
-    },
+
+
+        // Center
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [1,2,3,4,5]
+            },
+            "on-click": "activate"
+        },
+
+        // Right Side
     
-    "battery": {
-        "format": "{capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "states": {
-            "warning": 30,
-            "critical": 15
+        "custom/expand": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/endpoint":{
+            "format": "|",
+            "tooltip": false
+        },
+        "custom/logoutsession": {
+            "format": "󰍃",
+            "on-click": "hyprctl dispatch exit",
+            "tooltip": true,
+            "tooltip-format": "Log-Out"
+        },
+        "custom/poweroff": {
+            "format": "⏻",
+            "on-click": "systemctl poweroff",
+            "tooltip": true,
+            "tooltip-format": "Turn Off"
+        },
+        "custom/lock": {
+            "format": "",
+            "on-click": "exec hyprlock",
+            "tooltip": true,
+            "tooltip-format": "Lock Screen"
+        },
+        "group/expand": {
+            "orientation": "horizontal",
+            "drawer": {
+                "transition-duration": 600,
+                "transition-to-left": true,
+                "click-to-reveal": true
+            },
+            "modules": ["custom/expand","custom/lock","custom/logoutsession","custom/poweroff","custom/endpoint"]
+        },
+        "battery": {
+            "format": "{icon}",
+            "format-charging": "󰂄",
+            "format-icons": ["󰂃","󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "tooltip": true,
+            "tooltip-format": "Current: {capacity}%"
+        },
+        "custom/battery-text": {
+            "format": "{battery}"
+        },
+        "bluetooth": {
+            "format": "󰂯",
+            "format-off": "󰂲",
+            "format-on": "󰂯",
+            "format-connected": "󰂱",
+            "tooltip-format-connected": "{device_enumerate}"
+        },
+        "network": {
+            "format-wifi": "{icon}",
+            "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+            "format-ethernet": "󰈀",
+            "format-disconnected": "",
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+            "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+            "tooltip-format-disconnected": "Sin conexión"
         }
-    },
-    
-    "network": {
-        "format-wifi": "{essid}",
-        "format-ethernet": "Conectado",
-        "format-disconnected": "Desconectado",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
-        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "Sin conexión"
-    },
-    
-    "custom/power": {
-        "format": "⏻",
-        "on-click": "hyprctl dispatch exit",
-        "tooltip": false
     }
-}
+]

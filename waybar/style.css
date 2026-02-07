@@ -1,12 +1,103 @@
 
+/* General */
+* {
+    font-size: 14px;                                    /* Only for text, icons needs atomic adjustment */
+    font-weight: 700;
+    font-family: "JetBrainsMono Nerd Font Mono";
+    padding: 0;
+}
 window#waybar {
     all: unset;
-    background-color: red;
-    font-family: "JetBrainsMono";
+    color: #fbf1c7;
 }
 
-.modules-left {
-    margin: 0 10 0 10;
-    border-radius: 6;
-    background-color: rgba(10,10,10, 0.4);
+/* Commons for all */
+.modules-left, .modules-center, .modules-right {
+    background-color: alpha(#32302F, 1);
+    margin: 10 10 6 10;
+    border-radius: 8px;
+    padding: 0px 12px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+.module-center {
+    color: red
+}
+/* Components */
+
+
+
+#custom-expand {
+    font-size: 22px;
+    margin-right: 8px;
+    transition: color 0.2s ease-in-out;
+}
+#custom-expand:hover {
+    color: #83a598;
+}
+
+#custom-poweroff {
+    font-size: 18px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+#custom-poweroff:hover {
+    color: #fb4934;
+}
+#custom-logoutsession {
+    font-size: 18px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+#custom-logoutsession:hover {
+    color: #b8bb26;
+}
+#custom-lock {
+    font-size: 18px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+#custom-lock:hover {
+    color: #d79921;
+    /*color: #fabd2f;*/
+}
+
+
+
+
+
+#custom-settings {
+    margin-right: 12px;
+    transition: color 0.2s ease-in-out;
+    padding: 0;
+    font-size: 24px;
+}
+#custom-settings:hover {
+    color: #83a598;
+}
+
+
+
+
+
+
+
+
+
+
+
+#network {
+    font-size: 24px;
+    margin: 0 8px 0 8px;
+}
+
+#bluetooth {
+}
+#bluetooth.connected {
+    font-size: 22px;
+}
+
+#battery {
+    font-size: 16px;
+    margin-left: 12px;
+    margin-right: 0;
 }
