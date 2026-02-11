@@ -46,7 +46,7 @@
     },
     "custom/search": {
         "format": "",
-        "on-click": "fuzzel",
+        "on-click": "hyprlauncher",
         "tooltip": false,
         "tooltip-format": "Search"
     }

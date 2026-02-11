@@ -1,5 +1,12 @@
+-- Robtz's neovim config
 
-require('./base')		        -- nvim confing [not IDE or controls]
+-- Preload modules
+if vim.loader then
+    vim.loader.enable()
+end
+
+require('./base')
+
 require('./settings')           -- IDE settings
 
 require('plugins')

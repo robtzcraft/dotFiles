@@ -1,14 +1,15 @@
 
+@import url("assets/reset.css");
+
 /* General */
 * {
-    font-size: 14px;                                    /* Only for text, icons needs atomic adjustment */
     font-weight: 700;
     font-family: "JetBrainsMono Nerd Font Mono";
     padding: 0;
 }
 window#waybar {
     all: unset;
-    color: #fbf1c7;
+    color: #ebdbb2;
 }
 
 /* Commons for all */
@@ -19,10 +20,46 @@ window#waybar {
     padding: 0px 12px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
-.module-center {
-    color: red
-}
+
 /* Components */
+
+
+#workspaces {
+    font-size: 23px;
+}
+#workspaces button {
+    color: white;
+    padding: 0 4px;
+    min-width: 30px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;           /* ← Elimina sombra del texto */
+    -gtk-icon-shadow: none;      /* ← Elimina sombra del icono */
+    -gtk-icon-effect: none;      /* ← Elimina efectos GTK en iconos */
+}
+#workspaces button:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;           /* ← Importante también en hover */
+    -gtk-icon-shadow: none;      /* ← Importante también en hover */
+    -gtk-icon-effect: none;      /* ← Importante también en hover */
+    /* Si NO quieres cambio de color en hover, omite la línea siguiente */
+    color: #83a598;
+}
+#workspaces button.active {
+    color: #83a598;
+    text-shadow: none;
+    border-bottom: 2px solid red;
+    -gtk-icon-shadow: none;
+}
+
+
+
+
 
 
 

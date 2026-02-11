@@ -1,0 +1,282 @@
+/* ============================================
+   WAYBAR RESET CSS - Elimina TODOS los estilos GTK por defecto
+   Úsalo como base y construye encima solo lo que necesites
+   ============================================ */
+
+/* Reset universal - Elimina TODO */
+* {
+    all: unset;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Reset específico de Waybar */
+window#waybar {
+    all: unset;
+    background: transparent;
+    color: inherit;
+}
+
+/* Reset de contenedores principales */
+.modules-left,
+.modules-center,
+.modules-right {
+    all: unset;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* Reset de todos los módulos */
+#workspaces,
+#workspaces button,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#bluetooth,
+#language,
+#keyboard-state,
+tooltip,
+tooltip * {
+    all: unset;
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
+
+/* Reset de botones (workspaces, etc) */
+button {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset de estados de botones */
+button:hover,
+button:active,
+button:focus,
+button:checked {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+}
+
+/* Reset específico de workspaces */
+#workspaces button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    min-height: 0;
+    /* Propiedades específicas de GTK para iconos */
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    -gtk-icon-transform: none;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+#workspaces button:active {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+#workspaces button.focused,
+#workspaces button.active,
+#workspaces button.urgent {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+/* Reset de labels */
+label {
+    all: unset;
+    background: transparent;
+    color: inherit;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Reset de tooltips */
+tooltip {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+tooltip * {
+    all: unset;
+    background: transparent;
+    text-shadow: none;
+}
+
+/* Reset de módulos custom */
+#custom-power,
+#custom-expand,
+#custom-lock,
+#custom-logoutsession,
+#custom-poweroff,
+#custom-settings,
+#custom-endpoint {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+#custom-power:hover,
+#custom-expand:hover,
+#custom-lock:hover,
+#custom-logoutsession:hover,
+#custom-poweroff:hover,
+#custom-settings:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+/* Reset de grupos (drawers) */
+.group,
+.drawer {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset de transiciones - importante para eliminar animaciones GTK */
+* {
+    transition: none;
+    animation: none;
+}
+
+/* Reset de pseudo-elementos */
+/* *::before, 
+*::after {
+    all: unset;
+    content: none;
+    display: none;
+} */
+
+/* Reset de selección */
+/* *::selection {
+    background: transparent;
+    color: inherit;
+} */
+
+/* Reset de imágenes e iconos */
+image {
+    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+}
+
+/* Reset específico de tray */
+#tray {
+    all: unset;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+#tray > .passive {
+    all: unset;
+}
+
+#tray > .active {
+    all: unset;
+}
+
+#tray > .needs-attention {
+    all: unset;
+}
+
+/* ============================================
+   FIN DEL RESET
+   A partir de aquí construye tus estilos
+   ============================================ */

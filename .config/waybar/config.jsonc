@@ -28,8 +28,12 @@
         // Center
         "hyprland/workspaces": {
             "format": "{icon}",
+            "tooltip": false,
             "format-icons": {
-                "active": "",
+                "1": "",
+                "2": "󰈹",
+                "3": "",
+                // "active": "",
                 "default": "",
                 "empty": ""
             },
