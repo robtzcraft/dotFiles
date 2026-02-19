@@ -14,8 +14,11 @@ Item {
     property var batteryLevel: Math.round( UPower.displayDevice.percentage * 100 )
     property string batteryStatus: {
         const state = UPower.displayDevice.state
-        if (state === UPowerDeviceState.Charging) return "Charging"
-        // return "On battery"
+        if (state === UPowerDeviceState.Charging) {
+            return "Charging"
+        } else {
+            return ""
+        }
     }
 
     property var batteryIcons: ["󰁻","󰁽","󰁿","󰂁","󰁹"]
@@ -141,11 +144,12 @@ Item {
                 }
 
                 Text {
+                    visible: true
                     text: `${Qt.formatDateTime(clock.date, "hh:mm")}`
                     font.family: sansFont
                     font.pointSize: 10
                     font.weight: 700
-                    color: "white"
+                    color: "#FBF1C7"
                 }
             }
             Behavior on color { ColorAnimation { duration: 200 } }
@@ -153,6 +157,9 @@ Item {
 
         // CenterConter
         Rectangle {
+
+            id: containerWorkspaces
+
             x: ( parent.width / 2 ) - ( this.width / 2 )
             y: paddingGlobal
             implicitWidth: childrenRect.width + ( paddingGlobal * 2 ) + 14
@@ -192,69 +199,65 @@ Item {
         Rectangle {
 
             id: containerRight
-
+            
             x: parent.width - this.width - 6
             y: paddingGlobal
-            implicitWidth: childrenRect.width + ( paddingGlobal * 2 )
+            implicitWidth: childrenRect.width + ( paddingGlobal * 3 )
             implicitHeight: parent.height - ( 2 * paddingGlobal )
             color: background
             radius: 10
 
             RowLayout {
-                spacing: 10
+                spacing: 6
+                anchors.centerIn: parent
                 Rectangle {
                     width: childrenRect.width + 10
                     height: containerRight.height
-                    color: "red"
+                    color: "transparent"
                     RowLayout {
                         anchors.centerIn: parent
                         Text {
                             text: `${batteryLevelIcon}${batteryStatus}`
                             font.family: `${sansFont}`
                             font.pointSize: 24 / 1.6
-                            color: "white"
-                        }
-                        /* Text: {
-                            text: "Heola"
-                            // font.family: `${sansFont}`
-                            // font.pointSize: 20 / 1.6
                             color: "#FBF1C7"
-                        }*/ 
+                        }
                         Text {
                             text: `${batteryLevel}%`
                             font.family: sansFont
                             font.pointSize: 16 / 1.6
                             font.weight: 700
-                            color: "white"
-                        }
-                        Rectangle {
-                            id: statusBarButton
-                            color: "transparent"
-                            width: childrenRect.width + 2 // + ( paddingGlobal * 2 )
-                            height: parent.parent.height
-                            radius: 4
+                            color: "#FBF1C7"
+                        } 
+                    }
+                }
+                Rectangle {
+                        id: statusBarButton
+                        color: "transparent"
+                        width: childrenRect.width + 2 // + ( paddingGlobal * 2 )
+                        height: parent.parent.height
+                        radius: 4
 
-                            Text {
-                                text: "󰍃"
-                                font.pointSize: 14
-                                font.family: monoPropoFont
-                                font.weight: 100
-                                color: mouseHandler.containsMouse ? "cyan" : "white"
+                        Text {
+                            anchors.centerIn: parent
+                            text: "󰍃"
+                            font.pointSize: 14
+                            font.family: monoPropoFont
+                            font.weight: 100
+                            color: mouseHandler.containsMouse ? "#8EC07C" : "#FBF1C7"
     
-                                Behavior on color { 
-                                    ColorAnimation { duration: 200 } 
-                                }
+                            Behavior on color { 
+                                ColorAnimation { duration: 200 } 
                             }
+                        }
 
-                            MouseArea {
-                                id: mouseHandler
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                hoverEnabled: true
-                                onClicked: {
-                                    process_closeHyprlandSession.running = true
-                                }
-                            }
+                        MouseArea {
+                            id: mouseHandler
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            hoverEnabled: true
+                            onClicked: {
+                                process_closeHyprlandSession.running = true
                         }
                     }
                 }
