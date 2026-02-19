@@ -12,6 +12,15 @@ import Quickshell.Hyprland
 Item {
 
     property var batteryLevel: Math.round( UPower.displayDevice.percentage * 100 )
+    property string batteryStatus: {
+        const state = UPower.displayDevice.state
+        if (state === UPowerDeviceState.Charging) return "Charging"
+        // return "On battery"
+    }
+
+    property var batteryIcons: ["󰁻","󰁽","󰁿","󰂁","󰁹"]
+    property string batteryLevelIcon: batteryIcons[Math.min(Math.floor(batteryLevel / 20), 9)]
+
 
     SystemClock {
         id: clock
@@ -111,12 +120,16 @@ Item {
                         x: parent.width / 2 - (this.width / 2)
                         y: parent.height / 2 - (this.height / 2)
                         text: "󰣇"
-                        font.pointSize: 18
-                        color: "#FBF1C7"
+                        font.pointSize: 28 / 1.6
+                        color: archIconHandler.containsMouse ? "#8EC07C" : "#FBF1C7"
+                        Behavior on color { 
+                            ColorAnimation { duration: 200 } 
+                        }
                     }
 
 
                     MouseArea {
+                        id: archIconHandler
                         anchors.fill: parent
                         hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
@@ -128,8 +141,10 @@ Item {
                 }
 
                 Text {
-                    text: `${batteryLevel}% - ${Qt.formatDateTime(clock.date, "hh:mm")}`
+                    text: `${Qt.formatDateTime(clock.date, "hh:mm")}`
                     font.family: sansFont
+                    font.pointSize: 10
+                    font.weight: 700
                     color: "white"
                 }
             }
@@ -175,6 +190,9 @@ Item {
 
         // Right Elements
         Rectangle {
+
+            id: containerRight
+
             x: parent.width - this.width - 6
             y: paddingGlobal
             implicitWidth: childrenRect.width + ( paddingGlobal * 2 )
@@ -182,46 +200,64 @@ Item {
             color: background
             radius: 10
 
-            Rectangle {
+            RowLayout {
+                spacing: 10
+                Rectangle {
+                    width: childrenRect.width + 10
+                    height: containerRight.height
+                    color: "red"
+                    RowLayout {
+                        anchors.centerIn: parent
+                        Text {
+                            text: `${batteryLevelIcon}${batteryStatus}`
+                            font.family: `${sansFont}`
+                            font.pointSize: 24 / 1.6
+                            color: "white"
+                        }
+                        /* Text: {
+                            text: "Heola"
+                            // font.family: `${sansFont}`
+                            // font.pointSize: 20 / 1.6
+                            color: "#FBF1C7"
+                        }*/ 
+                        Text {
+                            text: `${batteryLevel}%`
+                            font.family: sansFont
+                            font.pointSize: 16 / 1.6
+                            font.weight: 700
+                            color: "white"
+                        }
+                        Rectangle {
+                            id: statusBarButton
+                            color: "transparent"
+                            width: childrenRect.width + 2 // + ( paddingGlobal * 2 )
+                            height: parent.parent.height
+                            radius: 4
 
-                id: statusBarButton
+                            Text {
+                                text: "󰍃"
+                                font.pointSize: 14
+                                font.family: monoPropoFont
+                                font.weight: 100
+                                color: mouseHandler.containsMouse ? "cyan" : "white"
+    
+                                Behavior on color { 
+                                    ColorAnimation { duration: 200 } 
+                                }
+                            }
 
-                color: "transparent"
-
-                width: childrenRect.width + 2 // + ( paddingGlobal * 2 )
-                height: parent.height - ( paddingGlobal * 2 )
-                x: parent.width - this.width - paddingGlobal
-                y: paddingGlobal
-                radius: 4
-
-                Text {
-                    text: "󰍃"
-                    font.pointSize: 14
-                    font.family: monoPropoFont
-                    font.weight: 100
-                    color: mouseHandler.containsMouse ? "cyan" : "white"
-                    x: ( parent.width / 2 ) - ( this.width / 2 )
-                    y: ( parent.height / 2 ) - ( this.height / 2 )
-
-                    // Animation
-                    Behavior on color { ColorAnimation { duration: 200 } }
-                }
-
-                MouseArea {
-                    id: mouseHandler
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: {
-                        process_closeHyprlandSession.running = true
+                            MouseArea {
+                                id: mouseHandler
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                hoverEnabled: true
+                                onClicked: {
+                                    process_closeHyprlandSession.running = true
+                                }
+                            }
+                        }
                     }
                 }
-            }
-
-            Text {
-                font.family: config.fontScheme.monospace
-                text: config.colorScheme || "Loading..."
-                color: "white"
             }
         }
     }

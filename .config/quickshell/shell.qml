@@ -15,14 +15,12 @@ import Quickshell.Hyprland
 
 ShellRoot {
 
-    // property var config: ({})
-
     property int paddingGlobal: 6
     property color background: "#282828"
     property color bg0_s: "#32302F"
 
     // Fonts
-    property string sansFont: "Noto Sans"
+    property string sansFont: "SF Pro"
     property string monospaceFont: "JetBrains Mono Nerd Font"
     property string monoPropoFont: "JetBrains Mono Nerd Font Propo"
 
