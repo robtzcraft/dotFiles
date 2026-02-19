@@ -1,0 +1,12 @@
+{
+    "ui": {
+        "user": {
+            "name": "robtz"
+        },
+        "wallpaper": {
+            "path": "~/Pictures/Wallpapers/",
+            "wallpaperSelected": "wallpaper",
+            "defaultWallpaper": "default.png"
+        }
+    }
+}

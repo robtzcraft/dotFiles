@@ -1,0 +1,21 @@
+{
+    "colorTheme": "gruvbox",
+    "colorScheme": "Light",
+    "": "",
+    "colorSchemeDark": {
+        "bg": "green"
+    },
+    "colorSchemeLight": {
+        "bg": "yellow"
+    },
+    "bluetoothStatus": false,
+    "wifiStatus": true,
+    "primaryColor": "#333333",
+    "padding": 6,
+    "rounded": 10,
+    "fontScheme": {
+        "monospace": "JetBrains Mono Nerd Font",
+        "monospacePropo": "JetBrains Mono Nerd Font Propo",
+        "sans": "Noto Sans"
+    }
+}
