@@ -20,6 +20,7 @@ require("mason-lspconfig").setup({
     "html",         -- HTML
     "cssls",        -- CSS
     "jsonls",       -- JSON
+    "qmlls",
     "yamlls",       -- YAML
   },
   automatic_installation = true
