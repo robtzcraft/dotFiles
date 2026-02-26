@@ -1,23 +1,23 @@
 
 import QtQuick
-import QtQuick.Layouts
 
 Rectangle {
 
-    id: dataDisplayerContainer
+    id: metricCardContainer
     
     property string itemData: ""
-    property int itemHeight: 30
+    property int fontSize: 11
+    readonly property int itemHeight: 30
 
     implicitWidth: childrenRect.width
     implicitHeight: itemHeight
     color: "transparent"
 
     Text {
-        anchors.centerIn: dataDisplayerContainer
+        anchors.centerIn: metricCardContainer
         text: itemData
-        color: "#D5C4A1"
-        font.pointSize: 12
+        color: "#FBF1C7"
+        font.pointSize: fontSize
         font.family: sansFont
         font.weight: 600
     }

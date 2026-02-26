@@ -18,7 +18,7 @@ Item {
     property string batteryStatus: {
         const state = UPower.displayDevice.state
         if (state === UPowerDeviceState.Charging) {
-            return "Charging"
+            return "󱐋"
         } else {
             return ""
         }
@@ -138,39 +138,12 @@ Item {
 
                 width: childrenRect.width + ( paddingGlobal )
 
-                Rectangle {
-
-                    height: parent.parent.height - 10
-                    width: this.height
-                    color: "transparent"
-
-                    Text {
-                        x: parent.width / 2 - (this.width / 2)
-                        y: parent.height / 2 - (this.height / 2)
-                        text: "󰣇"
-                        font.pointSize: 28 / 1.6
-                        color: archIconHandler.containsMouse ? "#8EC07C" : "#FBF1C7"
-                        Behavior on color { 
-                            ColorAnimation { duration: 200 } 
-                        }
-                    }
-
-
-                    MouseArea {
-                        id: archIconHandler
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: {
-                            popupTest.visible = !popupTest.visible
-                            // statusBar_SessionOptions.visible = !statusBar_SessionOptions.visible
-                        }
-                    }
-                }
+                /* AboutThisDevice */
+                ActionCard { content: "󰣇"; onClicked: process_aboutThisDevice.running = true }
 
                 /* Date [ Month / Day -- hh:mm AP ] */
-                DataDisplayer { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
-                DataDisplayer { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
+                MetricCard { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
+                MetricCard { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
 
             }
             Behavior on color { ColorAnimation { duration: 200 } }
@@ -216,7 +189,7 @@ Item {
             }
         }
 
-        // Right Elements
+        // Right
         Rectangle {
 
             id: containerRight
@@ -229,59 +202,18 @@ Item {
             radius: 10
 
             RowLayout {
-                spacing: 6
+                spacing: 10
                 anchors.centerIn: parent
-                Rectangle {
-                    width: childrenRect.width + 10
-                    height: containerRight.height
-                    color: "transparent"
-                    RowLayout {
-                        anchors.centerIn: parent
-                        Text {
-                            text: `${batteryLevelIcon}${batteryStatus}`
-                            font.family: `${sansFont}`
-                            font.pointSize: 24 / 1.6
-                            color: "#FBF1C7"
-                        }
-                        Text {
-                            text: `${batteryLevel}%`
-                            font.family: sansFont
-                            font.pointSize: 16 / 1.6
-                            font.weight: 700
-                            color: "#FBF1C7"
-                        } 
-                    }
-                }
-                Rectangle {
-                        id: statusBarButton
-                        color: "transparent"
-                        width: childrenRect.width + 2 // + ( paddingGlobal * 2 )
-                        height: parent.parent.height
-                        radius: 4
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: "󰍃"
-                            font.pointSize: 14
-                            font.family: monoPropoFont
-                            font.weight: 100
-                            color: mouseHandler.containsMouse ? "#8EC07C" : "#FBF1C7"
-    
-                            Behavior on color { 
-                                ColorAnimation { duration: 200 } 
-                            }
-                        }
-
-                        MouseArea {
-                            id: mouseHandler
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            hoverEnabled: true
-                            onClicked: {
-                                process_closeHyprlandSession.running = true
-                        }
-                    }
+                // Battery icon and percentage
+                RowLayout {
+                    /* batteryStatus is not displayed if not charging */
+                    MetricCard { itemData: `${batteryLevelIcon}${batteryStatus}`; fontSize: 14 }
+                    MetricCard { itemData: `${batteryLevel}%` }
                 }
+                
+                // Close hyprland session
+                ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
             }
         }
     }
