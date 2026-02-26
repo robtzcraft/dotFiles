@@ -1,0 +1,4 @@
+module StatusBar
+StatusBar 1.0 StatusBar.qml
+internal ItemDisplayer ItemDisplayer.qml
+internal ActionButton ActionButton.qml
