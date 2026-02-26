@@ -1,5 +1,5 @@
 
-import "modules"
+import "modules/StatusBar"
 
 import QtQuick
 
