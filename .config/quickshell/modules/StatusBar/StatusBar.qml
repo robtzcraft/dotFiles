@@ -138,8 +138,6 @@ Item {
 
                 width: childrenRect.width + ( paddingGlobal )
 
-                
-
                 Rectangle {
 
                     height: parent.parent.height - 10
@@ -170,16 +168,10 @@ Item {
                     }
                 }
 
-                Loader {
-                    id: batteryDisplayer
-                    sourceComponent: dataDisplayer
-                    Binding {
-                        target: batteryDisplayer.item
-                        property: "stringData"
-                        value: `${Qt.formatDateTime(clock.date, "MMM dd    hh:mm AP")}`
-                        when: batteryDisplayer.status === Loader.Ready
-                    }
-                }
+                /* Date [ Month / Day -- hh:mm AP ] */
+                DataDisplayer { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
+                DataDisplayer { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
+
             }
             Behavior on color { ColorAnimation { duration: 200 } }
         }
