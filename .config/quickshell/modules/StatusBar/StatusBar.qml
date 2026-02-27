@@ -12,16 +12,22 @@ import Quickshell.Io
 import Quickshell.Services.UPower
 import Quickshell.Hyprland
 
-Item {
+PanelWindow {
+
+    id: statusBar
 
     property var batteryLevel: Math.round( UPower.displayDevice.percentage * 100 )
+    
     property string batteryStatus: {
+    
         const state = UPower.displayDevice.state
         return (state === UPowerDeviceState.Charging) ? "󱐋" : ""
+    
     }
-
+    
     property var batteryIcons: ["󰁻","󰁽","󰁿","󰂁","󰁹"]
     property string batteryLevelIcon: batteryIcons[Math.min(Math.floor(batteryLevel / 20), 9)]
+    property int paddingContainer: 12
 
     SystemClock {
         id: clock
@@ -37,73 +43,60 @@ Item {
         command: ["kitty", "--hold", "fastfetch"]
     }
 
-    // StatusBar
-    PanelWindow {
+    // Properties
+    implicitHeight: 50
+    visible: true
+    color: "transparent"
+    anchors { top: true; left: true; right: true }
 
-        // Properties
-        id: statusBar
-        implicitHeight: 50
-        visible: true
-        color: "transparent"
-        anchors { top: true; left: true; right: true }
+    // Date data
+    SectionContainer {
+        positionX: paddingGlobal
+        positionY: paddingGlobal
+        ActionCard { content: "󰣇"; onClicked: process_aboutThisDevice.running = true }
+        MetricCard { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
+        MetricCard { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
+    }
 
-        property int paddingContainer: 12
+    // Workspaces
+    SectionContainer {
 
-        SectionContainer {
-            positionX: paddingGlobal
-            positionY: paddingGlobal
-            ActionCard { content: "󰣇"; onClicked: process_aboutThisDevice.running = true }
-            MetricCard { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
-            MetricCard { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
-        }
-
-        // CenterConter
-
-        SectionContainer {
-            positionX: ( parent.width / 2 ) - ( this.width / 2 )
-            positionY: paddingGlobal
-            Repeater {
-                model: 5
-                Rectangle {
-                    width: 16
-                    height: this.width
-                    radius: this.width / 2
-                    color: {
-                        if((modelData + 1) == Hyprland.focusedWorkspace.id){
-                            "#FB4934"
-                        } else {
-                            "#FBF1C7"
-                        }
-                    }
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: {
-                            Hyprland.dispatch(`workspace ${modelData + 1}`)
-                        }
+        positionX: ( parent.width / 2 ) - ( this.width / 2 )
+        positionY: paddingGlobal
+        
+        Repeater {
+            model: 5
+            Rectangle {
+                width: 16
+                height: this.width
+                radius: this.width / 2
+                color: ((modelData + 1) == Hyprland.focusedWorkspace.id) ? "#FB4934" : "#FBF1C7"
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Hyprland.dispatch(`workspace ${modelData + 1}`)
                     }
                 }
             }
         }
+    }
 
+    // System data
+    SectionContainer {
 
-        // Right
-        SectionContainer {
-
-            positionX: parent.width - this.width - 6
-            positionY: paddingGlobal
+        positionX: parent.width - this.width - 6
+        positionY: paddingGlobal
             
-            RowLayout {
+        RowLayout {
             
-                // batteryStatus is not displayed if not charging
-                MetricCard { itemData: `${batteryLevelIcon}${batteryStatus}`; fontSize: 14 }
-                MetricCard { itemData: `${batteryLevel}%` }        
+            // batteryStatus is not displayed if not charging
+            MetricCard { itemData: `${batteryLevelIcon}${batteryStatus}`; fontSize: 14 }
+            MetricCard { itemData: `${batteryLevel}%` }        
             
-            }
-            
-            // Close hyprland session
-            ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
         }
+
+        ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
     }
 }
