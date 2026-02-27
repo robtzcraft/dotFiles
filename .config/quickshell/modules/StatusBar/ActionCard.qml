@@ -1,5 +1,6 @@
 
 import QtQuick
+import QtQuick.Controls
 
 Rectangle {
 
@@ -7,6 +8,8 @@ Rectangle {
 
     property string content: ""
     property int fontSize: 21
+    readonly property string initialColor: "#FBF1C7"
+    readonly property string hoverColor: "#458588"
     signal clicked()
 
     color: "transparent"
@@ -17,7 +20,7 @@ Rectangle {
         anchors.centerIn: actionCardContainer
         text: content
         font.pointSize: fontSize
-        color: actionCardContainerCursorHandler.containsMouse ? "#8EC07C" : "#FBF1C7"
+        color: actionCardContainerCursorHandler.containsMouse ? hoverColor : initialColor
         Behavior on color { 
             ColorAnimation { duration: 200 } 
         }

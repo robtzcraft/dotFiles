@@ -17,16 +17,11 @@ Item {
     property var batteryLevel: Math.round( UPower.displayDevice.percentage * 100 )
     property string batteryStatus: {
         const state = UPower.displayDevice.state
-        if (state === UPowerDeviceState.Charging) {
-            return "󱐋"
-        } else {
-            return ""
-        }
+        return (state === UPowerDeviceState.Charging) ? "󱐋" : ""
     }
 
     property var batteryIcons: ["󰁻","󰁽","󰁿","󰂁","󰁹"]
     property string batteryLevelIcon: batteryIcons[Math.min(Math.floor(batteryLevel / 20), 9)]
-
 
     SystemClock {
         id: clock
@@ -40,74 +35,6 @@ Item {
     Process {
         id: process_aboutThisDevice
         command: ["kitty", "--hold", "fastfetch"]
-    }
-
-    // SessionOptions
-    PanelWindow {
-        id: statusBar_SessionOptions
-        visible: false
-
-        Rectangle {
-            Text {
-                text: "Hola"
-            }
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-            }
-        }
-    }
-
-    PopupWindow {
-        id: popupTest
-        visible: false
-        width: 240
-        height: 160
-        color: "#444"
-
-        anchor.window: statusBar
-        anchor.rect.x: 100
-        anchor.rect.y: statusBar.heigth
-
-        HyprlandFocusGrab {
-            active: popupTest.visible
-            windows: [popupTest]
-            onCleared: {
-                popupTest.visible = false
-                popupTest.requestActivate()
-            }
-        }
-
-        Text {
-            anchors.centerIn: parent
-            text: "test"
-            color: "white"
-            font.pixelSize: 16
-        }
-    }
-
-    Component {
-
-        /* DataDisplayer
-         * Function: Only to display data, hover and other interectations not allowed */
-
-        id: dataDisplayer
-
-        Rectangle {
-            id: dataDisplayerContainer
-            implicitWidth: childrenRect.width + paddingGlobal
-            implicitHeight: 26
-            color: "transparent"
-            property string stringData: ""
-            Text {
-                anchors.centerIn: dataDisplayerContainer
-                text: stringData
-                color: "#D5C4A1"
-                font.pointSize: 12
-                font.family: sansFont
-                font.weight: 600
-            }
-        }
     }
 
     // StatusBar
