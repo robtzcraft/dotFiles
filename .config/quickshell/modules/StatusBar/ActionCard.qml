@@ -8,8 +8,8 @@ Rectangle {
 
     property string content: ""
     property int fontSize: 21
-    readonly property string initialColor: "#FBF1C7"
-    readonly property string hoverColor: "#458588"
+    readonly property string initialFontColor: color_fg0
+    readonly property string hoverFontColor: color_blue
     signal clicked()
 
     color: "transparent"
@@ -20,7 +20,7 @@ Rectangle {
         anchors.centerIn: actionCardContainer
         text: content
         font.pointSize: fontSize
-        color: actionCardContainerCursorHandler.containsMouse ? hoverColor : initialColor
+        color: actionCardContainerCursorHandler.containsMouse ? hoverFontColor : initialFontColor
         Behavior on color { 
             ColorAnimation { duration: 200 } 
         }

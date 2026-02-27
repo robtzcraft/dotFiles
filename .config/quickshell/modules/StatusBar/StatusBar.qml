@@ -42,106 +42,68 @@ Item {
 
         // Properties
         id: statusBar
-        implicitHeight: 46
+        implicitHeight: 50
         visible: true
         color: "transparent"
         anchors { top: true; left: true; right: true }
 
         property int paddingContainer: 12
 
-        // LeftContent
-        Rectangle {
-            x: paddingGlobal
-            y: paddingGlobal
-            implicitWidth: childrenRect.width + ( paddingGlobal * 2 )
-            implicitHeight: parent.height - ( 2 * paddingGlobal )
-            color: background
-            radius: 10
-
-            RowLayout {
-
-                x: paddingGlobal
-                y: ( parent.height / 2 ) - ( this.height / 2 )
-
-                width: childrenRect.width + ( paddingGlobal )
-
-                /* AboutThisDevice */
-                ActionCard { content: "󰣇"; onClicked: process_aboutThisDevice.running = true }
-
-                /* Date [ Month / Day -- hh:mm AP ] */
-                MetricCard { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
-                MetricCard { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
-
-            }
-            Behavior on color { ColorAnimation { duration: 200 } }
+        SectionContainer {
+            positionX: paddingGlobal
+            positionY: paddingGlobal
+            ActionCard { content: "󰣇"; onClicked: process_aboutThisDevice.running = true }
+            MetricCard { itemData: `${Qt.formatDateTime(clock.date, "MMM dd")}` }
+            MetricCard { itemData: `${Qt.formatDateTime(clock.date, "hh:mm AP")}` }
         }
 
         // CenterConter
-        Rectangle {
 
-            id: containerWorkspaces
-
-            x: ( parent.width / 2 ) - ( this.width / 2 )
-            y: paddingGlobal
-            implicitWidth: childrenRect.width + ( paddingGlobal * 2 ) + 14
-            implicitHeight: parent.height - ( 2 * paddingGlobal )
-            color: background
-            radius: 10
-            RowLayout {
-                spacing: 10
-                anchors.centerIn: parent
-                Repeater {
-                    model: 5
-                    Rectangle {
-                        width: 16
-                        height: this.width
-                        radius: this.width / 2
-                        color: {
-                            if((modelData + 1) == Hyprland.focusedWorkspace.id){
-                                "#FB4934"
-                            } else {
-                                "#FBF1C7"
-                            }
+        SectionContainer {
+            positionX: ( parent.width / 2 ) - ( this.width / 2 )
+            positionY: paddingGlobal
+            Repeater {
+                model: 5
+                Rectangle {
+                    width: 16
+                    height: this.width
+                    radius: this.width / 2
+                    color: {
+                        if((modelData + 1) == Hyprland.focusedWorkspace.id){
+                            "#FB4934"
+                        } else {
+                            "#FBF1C7"
                         }
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                Hyprland.dispatch(`workspace ${modelData + 1}`)
-                            }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            Hyprland.dispatch(`workspace ${modelData + 1}`)
                         }
                     }
                 }
             }
         }
 
+
         // Right
-        Rectangle {
+        SectionContainer {
 
-            id: containerRight
+            positionX: parent.width - this.width - 6
+            positionY: paddingGlobal
             
-            x: parent.width - this.width - 6
-            y: paddingGlobal
-            implicitWidth: childrenRect.width + ( paddingGlobal * 3 )
-            implicitHeight: parent.height - ( 2 * paddingGlobal )
-            color: background
-            radius: 10
-
             RowLayout {
-                spacing: 10
-                anchors.centerIn: parent
-
-                // Battery icon and percentage
-                RowLayout {
-                    /* batteryStatus is not displayed if not charging */
-                    MetricCard { itemData: `${batteryLevelIcon}${batteryStatus}`; fontSize: 14 }
-                    MetricCard { itemData: `${batteryLevel}%` }
-                }
-                
-                // Close hyprland session
-                ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
+            
+                // batteryStatus is not displayed if not charging
+                MetricCard { itemData: `${batteryLevelIcon}${batteryStatus}`; fontSize: 14 }
+                MetricCard { itemData: `${batteryLevel}%` }        
+            
             }
+            
+            // Close hyprland session
+            ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
         }
     }
 }

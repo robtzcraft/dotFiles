@@ -2,3 +2,4 @@ module StatusBar
 StatusBar 1.0 StatusBar.qml
 internal MetricCard MetricCard.qml
 internal ActionCard ActionCard.qml
+internal SectionContainer SectionContainer.qml
