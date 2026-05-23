@@ -10,11 +10,11 @@
 #       * Pipewire-alsa
 #       * Pipewire-jack
 #       * Wireplumber
+# 
+# Other Dependencies
+#   * Yay
+#
 #   
-
-
-
-
 
 # Wallpaper
 PICTURES_DIR="$HOME/Pictures/Wallpapers"

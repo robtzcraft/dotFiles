@@ -1,9 +1,33 @@
 
-
-
 ## LockScreen (Hyprlock)
 
 # 2. User Interface
+
+## 2.1 Colors
+
+Offically, the user can choose accross different colorscheme according to the user preferences, all
+colorschemes must have the following structure: 
+
+* `bg[0-6]`
+* `central`
+* `fg[0-6]`
+* `red, orange, yellow, green, aqua, blue, purple, [ , 1]`
+
+Making a total of **29** colors per theme.
+
+By default, the current repository comes with 6 colorschemes:
+
+* `gruvbox dark` (default with installation)
+* `gruvbox light`
+* `nord dark`
+* `nord light`
+* `catppuccin dark`
+* `catppuccin light`
+
+All these these are addapted to the UI robtz requeriments, for example, nord themes has extra 
+colors and tones, while catppuccin has less than original colorschemes.
+
+The user can create extra colorschemes using the `Config Panel`.
 
 ## 2.1 Widgets (Quickshell)
 

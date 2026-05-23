@@ -1,0 +1,129 @@
+[global]
+    ### Display ###
+    monitor = 0
+    follow = mouse
+
+    ### Geometry ###
+    width = (300, 420)
+    height = (0, 200)
+    origin = top-right
+    offset = 16x52
+    scale = 0
+
+    ### Notifications ###
+    notification_limit = 5
+    gap_size = 8
+
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 3
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 380
+    progress_bar_corner_radius = 2
+    progress_bar_corners = all
+
+    ### Appearance ###
+    transparency = 0
+    separator_height = 0
+    padding = 14
+    horizontal_padding = 16
+    text_icon_padding = 12
+    frame_width = 0
+    frame_color = "#00000000"
+    gap_size = 8
+
+    corner_radius = 16
+    corners = all
+
+    ### Icon ###
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 42
+    icon_corner_radius = 8
+    icon_theme = "Papirus, hicolor"
+
+    ### Text ###
+    font = SF Pro Display 10
+    line_height = 2
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = false
+    word_wrap = yes
+
+    ### History ###
+    sticky_history = yes
+    history_length = 20
+
+    ### Misc ###
+    dmenu = /usr/bin/rofi -dmenu -p dunst
+    browser = /usr/bin/xdg-open
+
+    ### Wayland ###
+    layer = overlay
+    force_xwayland = false
+
+    ### Mouse ###
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+    ### Animation ###
+    # Slide in desde la derecha, como macOS
+    enable_posix_regex = true
+
+[experimental]
+    per_monitor_dpi = false
+
+# ─── Urgency: Low ──────────────────────────────────────────────────────────────
+# Notificaciones silenciosas / informativas
+[urgency_low]
+    background = "#1e1e2ecc"
+    foreground = "#cdd6f4"
+    highlight   = "#89b4fa"
+    frame_color = "#45475a44"
+    timeout = 4
+    default_icon = dialog-information
+
+# ─── Urgency: Normal ───────────────────────────────────────────────────────────
+# La mayoría de las notificaciones del sistema
+[urgency_normal]
+    background = "#1e1e2eee"
+    foreground = "#cdd6f4"
+    highlight   = "#cba6f7"
+    frame_color = "#45475a44"
+    timeout = 6
+    default_icon = dialog-information
+
+# ─── Urgency: Critical ─────────────────────────────────────────────────────────
+# Errores, alertas
+[urgency_critical]
+    background = "#1e1e2ef5"
+    foreground = "#cdd6f4"
+    highlight   = "#f38ba8"
+    frame_color = "#f38ba844"
+    frame_width = 1
+    timeout = 0
+    default_icon = dialog-error
+
+# ─── App-specific rules ────────────────────────────────────────────────────────
+[firefox]
+    appname = "Firefox"
+    background = "#1e1e2eee"
+    highlight = "#fab387"
+
+[spotify]
+    appname = "Spotify"
+    background = "#1e1e2eee"
+    highlight = "#a6e3a1"
+
+[whatsapp]
+    summary = "*WhatsApp*"
+    background = "#1e1e2eee"
+    highlight = "#a6e3a1"

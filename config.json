@@ -1,12 +1,77 @@
 {
-    "ui": {
-        "user": {
-            "name": "robtz"
-        },
-        "wallpaper": {
-            "path": "~/Pictures/Wallpapers/",
-            "wallpaperSelected": "wallpaper",
-            "defaultWallpaper": "default.png"
+  "system": {
+    "os": "arch-linux",
+    "hostname": "arch",
+    "username": "robtz",
+    "defaultApps": {
+      "terminal": "kitty",
+      "browser": "firefox",
+      "launcher": "hyprlauncher"
+    },
+    "paths": {
+      "home": "/home/robtz",
+      "documents": "/home/robtz/Documents",
+      "dotFiles": "/home/robtz/Documents/dotFiles",
+      "wallpapers": "/home/robtz/Pictures/Wallpapers",
+      "colorschemes": "/home/robtz/Documents/dotFiles/src/ColorSchemes"
+    },
+    "compositor": {
+      "name": "hyprland",
+      "config": {
+        "monitors": ["eDP-1"],
+        "keyboard": {
+          "kb_layout": "latam",
+          "follow_mouse": 1,
+          "touchpad": {
+            "natural_scroll": true
+          },
+          "sensitivity": 0
         }
+      }
     }
+  },
+  "user": {
+    "name": "robtz"
+  },
+    "ui": {
+        "colorscheme": "gruvbox-dark",
+        "borderRadius": {
+            "short": 8,
+            "medium": 12,
+            "global": 16
+        },
+    "config": {
+      "padding": 6,
+      "borderRadius": 10,
+      "backgroundColor": "bg0",
+      "foregroundColor": "fg3",
+      "onHoverColor": "blue1",
+      "focusedColor": "blue",
+      "unfocusedColor": "",
+      "inactiveColor": ""
+    },
+    "fonts": {
+      "sansFont": "Inter",
+      "monospaceFont": "JetBrains Mono Nerd Font",
+      "monospacePropoFont": "JetBrains Mono Nerd Font Propo"
+    },
+    "wallpaper": {
+      "path": "~/Pictures/Wallpapers/",
+      "wallpaperSelected": "nord_default.png",
+      "defaultWallpaper": "default.png"
+    }
+  },
+  "defaultApps": {
+    "terminal": "kitty",
+    "browser": "firefox",
+    "launcher": ""
+  },
+  "quickshell": {
+    "ui_config": {
+      "padding": 6
+    }
+  },
+  "api": {
+    "key": "new_key_value"
+  }
 }

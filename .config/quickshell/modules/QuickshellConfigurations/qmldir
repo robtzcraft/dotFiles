@@ -1,0 +1,5 @@
+module QuickshellConfigs
+QuickshellConfigs 1.0 QuickshellConfigs.qml
+internal Button Button.qml
+internal Sidebar Sidebar.qml
+internal Viewport Viewport.qml

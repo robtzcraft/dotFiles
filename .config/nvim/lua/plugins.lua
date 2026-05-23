@@ -1,30 +1,28 @@
 -- lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+local lazypath = vim.fn.stdpath( "data" ) .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat( lazypath ) then
+    vim.fn.system( {
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    } )
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend( lazypath )
 
 -- Plugins
 local plugins = {
 
-  -- ColorScheme
-  'ellisonleao/gruvbox.nvim',
-  'shaunsingh/nord.nvim',
+    -- UI
+    'ellisonleao/gruvbox.nvim',
+    'nvim-lualine/lualine.nvim',
+    'nvim-tree/nvim-tree.lua',
+    'nvim-tree/nvim-web-devicons',
+    'romgrk/barbar.nvim',
 
-  -- StatusLine
-  'nvim-lualine/lualine.nvim',
-
-  -- Icons
-  'nvim-tree/nvim-web-devicons',
-
+    -- LSP Stuff
     -- LSP stuff
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
@@ -33,12 +31,12 @@ local plugins = {
   'rafamadriz/friendly-snippets',
   'saadparwaiz1/cmp_luasnip',
     -- Language Servers handling
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
 }
 
 -- Options
 local opts = { }
 
 -- lazy startup function
-require('lazy').setup(plugins, opts)
+require( 'lazy' ).setup( plugins, opts )

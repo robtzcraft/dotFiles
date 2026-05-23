@@ -1,4 +1,6 @@
 
+import "../../services"
+
 import QtQuick
 
 Rectangle {
@@ -16,9 +18,9 @@ Rectangle {
     Text {
         anchors.centerIn: metricCardContainer
         text: itemData
-        color: "#FBF1C7"
+        color: ConfigServices.foregroundColor
         font.pointSize: fontSize
-        font.family: sansFont
+        font.family: ConfigServices.sansFont
         font.weight: 600
     }
 }

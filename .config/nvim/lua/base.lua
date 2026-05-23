@@ -4,6 +4,9 @@ local o = vim.o
 local g = vim.g
 
 -- Options [vim.opt]
+
+-- Update for Nvim 0.12
+
 o.laststatus = 3
 o.showmode = false
 o.clipboard = "unnamedplus"
@@ -22,6 +25,7 @@ o.numberwidth = 1
 o.ruler = false
 
 opt.wrap = false
+opt.backupcopy = "yes"
 
 -- Providers
 g.loaded_node_provider = 0
