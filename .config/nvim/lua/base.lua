@@ -5,8 +5,6 @@ local g = vim.g
 
 -- Options [vim.opt]
 
--- Update for Nvim 0.12
-
 o.laststatus = 3
 o.showmode = false
 o.clipboard = "unnamedplus"
