@@ -2,7 +2,7 @@
 import "modules/StatusBar"
 import "modules/About"
 import "modules/QuickshellConfigurations"
-import "modules/Notifications"
+// import "modules/Notifications"
 
 import QtQuick
 
@@ -13,7 +13,7 @@ ShellRoot {
     // On hyprland starting
     StatusBar { }
 
-    Module { }
+    // Module { }
 
     About {
         id: aboutPage

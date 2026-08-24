@@ -6,21 +6,27 @@ import QtQuick
 Rectangle {
 
     id: metricCardContainer
-    
-    property string itemData: ""
-    property int fontSize: 11
-    readonly property int itemHeight: 30
 
-    implicitWidth: childrenRect.width
+    property string content: ""
+    property int fontSize: 11
+    property var isActive: true
+    readonly property int itemHeight: 19
+
+    implicitWidth: body.childrenRect.width
     implicitHeight: itemHeight
     color: "transparent"
 
-    Text {
-        anchors.centerIn: metricCardContainer
-        text: itemData
-        color: ConfigServices.foregroundColor
-        font.pointSize: fontSize
-        font.family: ConfigServices.sansFont
-        font.weight: 600
+    Item {
+        id: body
+        anchors.centerIn: parent
+        Text {
+            anchors.centerIn: parent
+            text: content
+            color: isActive === true ? ConfigServices.foregroundColor : "#EEEEEE00"
+            font.pointSize: fontSize
+            font.family: ConfigServices.sansFont
+            font.weight: 600
+        }
     }
+
 }

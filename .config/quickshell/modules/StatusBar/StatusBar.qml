@@ -12,25 +12,12 @@ import Quickshell.Io
 import Quickshell.Hyprland
 
 PanelWindow {
-
     id: statusBar
-
-    // property string testString: ""
-
-/*    Process {
-        id: testForOutput
-        command: ["stdbuf", "-oL", `${ConfigServices.homeURL}/Documents/dotFiles/.config/quickshell/services/mi_binario`]
-        running: true
-
-        stdout: SplitParser {
-            onRead: data => testString = data;
-        }
-    }*/
 
     // Processes
     Process {
         id: process_closeHyprlandSession
-        command: ["hyprctl", "dispatch", "exit"]
+        command: ["hyprctl", "dispatch", "hl.dsp.exit()"]
     }
 
     Process {
@@ -61,8 +48,8 @@ PanelWindow {
                 }
             } 
         }
-        MetricCard { itemData: `${Time.date}` }
-        MetricCard { itemData: `${Time.hour}` }
+        MetricCard { content: `${Time.date}` }
+        MetricCard { content: `${Time.hour}` }
     }
 
     // Workspaces
@@ -80,12 +67,10 @@ PanelWindow {
                 Behavior on color { ColorAnimation { duration: 120 } }
             
                 MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: {
-                        Hyprland.dispatch(`workspace ${modelData + 1}`)
-                    }
+                    anchors.fill: parent;
+                    hoverEnabled: true;
+                    cursorShape: Qt.PointingHandCursor;
+                    onClicked: Hyprland.dispatch(`hl.dsp.focus( { workspace = ${modelData + 1} } )`);
                 }
             }
         }
@@ -97,13 +82,14 @@ PanelWindow {
         positionY: ConfigServices.paddingGlobal
 
         ActionCard { content: ""; fontSize: 14; onClicked: process_reloadWallpaper.running = true }
-        // MetricCard { itemData: `${Network.ssid}` }
 
         RowLayout {
-            // batteryStatus is not displayed if not charging
-            MetricCard { itemData: `${Battery.batteryLevelIcon}${Battery.batteryStatus}`; fontSize: 14 }
-            MetricCard { itemData: `${Battery.batteryLevel}%` }
-            // MetricCard { itemData: `${testString}` }
+            // MetricCard { itemData: `${ Network.wifiStatus.icon }`; isActive: Network.wifiStatus.isActive; fontSize: 14 }
+            // MetricCard { itemData: `${ Network.ethernet.icon }`; isActive: Network.ethernet.isActive; fontSize: 14 }
+        }
+        RowLayout {
+            MetricCard { content: `${Battery.batteryLevelIcon}${Battery.batteryStatus}`; fontSize: 15 }
+            MetricCard { content: `${Battery.batteryLevel}%` }
         }
         ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
     }
