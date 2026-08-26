@@ -1,0 +1,9 @@
+module Services
+
+singleton Battery 1.0 Battery.qml
+singleton Bluetooth 1.0 Bluetooth.qml
+singleton ConfigServices 1.0 ConfigServices.qml
+singleton Connections 1.0 Connections.qml
+singleton Network 1.0 Network.qml
+singleton Notifications 1.0 Notifications.qml
+singleton Time 1.0 Time.qml

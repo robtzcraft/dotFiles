@@ -81,16 +81,20 @@ PanelWindow {
         positionX: parent.width - this.width - 6
         positionY: ConfigServices.paddingGlobal
 
-        ActionCard { content: ""; fontSize: 14; onClicked: process_reloadWallpaper.running = true }
+        ActionCard { content: ""; tooltipText: "Something"; fontSize: 14; onClicked: process_reloadWallpaper.running = true }
 
+        MetricCard { content: Bluetooth.bluetoothStatus.icon; fontSize: 15 }
+        
         RowLayout {
-            // MetricCard { itemData: `${ Network.wifiStatus.icon }`; isActive: Network.wifiStatus.isActive; fontSize: 14 }
-            // MetricCard { itemData: `${ Network.ethernet.icon }`; isActive: Network.ethernet.isActive; fontSize: 14 }
+            MetricCard { content: `${ Network.wifiStatus.icon }`; isActive: Network.wifiStatus.isActive; fontSize: 14 }
+            MetricCard { content: `${ Network.ethernet.icon }`; isActive: Network.ethernet.isActive; fontSize: 14 }
         }
         RowLayout {
-            MetricCard { content: `${Battery.batteryLevelIcon}${Battery.batteryStatus}`; fontSize: 15 }
+            MetricCard { content: `${Battery.batteryLevelIcon}${Battery.isCharging}`; fontSize: 15 }
             MetricCard { content: `${Battery.batteryLevel}%` }
         }
+
+
         ActionCard { content: "󰍃"; fontSize: 14; onClicked: process_closeHyprlandSession.running = true }
     }
 }

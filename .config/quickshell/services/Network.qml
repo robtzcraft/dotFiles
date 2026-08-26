@@ -1,7 +1,7 @@
 
 pragma Singleton;
 
-import Quickshell;
+import QtQuick;
 import Quickshell.Networking;
 
 /*
@@ -10,16 +10,15 @@ import Quickshell.Networking;
  *      2. Wired
  */
 
-Singleton {
-    id: root;
+QtObject {
+    id: root
 
-    property var networkDevices: Networking.devices.values;
-    property var wifiIcons: [ "󰤯","󰤟","󰤢","󰤥","󰤨" ];
-    property object ethernet: { isActive: true, icon: "1" }
-    property object wifiStatus: { isActive: true, icon: "1" }
+    property var test: 'Something'
+    property var networkDevices: Networking.devices.values
+    property var wifiIcons: [ "󰤯","󰤟","󰤢","󰤥","󰤨" ]
 
     /* If wired then the icon of wiring changes */
-    ethernet: {
+    property var ethernet: {
         for( const device of networkDevices ) {
             if( device.type === 2 ) {
                 return { isActive: true , icon: '󰈀' }
@@ -28,10 +27,10 @@ Singleton {
         return { isActive: false, icon: '󰅛' };
     }
 
-    wifiStatus: {
+    property var wifiStatus: {
         try {
             if( Networking.wifiEnabled !== true ) {
-                return { isActive: false, icon: '󰤭' };
+                return { isActive: false, icon: '󰤭' }
             }
             for( const device of networkDevices ) {
                 if( device.type !== 1 ) continue;
@@ -46,7 +45,6 @@ Singleton {
             }
             return { isActive: false, icon: '󰤭' };
         } catch( e ) {
-            console.warn( "wifiStatus error:", e );
             return { isActive: false, icon: '󰤭' };
         }
     }
