@@ -1,12 +1,8 @@
 
--- Necessary changes
+--  Necessary changes
 --      Change cursor size to 22px
---
 
-
-
-
-
+-- local json = require( '/home/robtz/Documents/dotFiles/src/LuaModules/json.lua' )
 
 -- Monitor config
 hl.monitor( {
@@ -23,8 +19,6 @@ hl.on( "hyprland.start", function( )
     hl.exec_cmd( "quickshell" )
     hl.exec_cmd( "hypridle" )
 end )
-
-
 
 hl.config( {
 
@@ -56,7 +50,7 @@ hl.config( {
             range = 80,
             color = "rgba(00000043)",
             color_inactive = "rgba(00000030)",
-        } 
+        }
     },
 
     animations = {
@@ -77,7 +71,8 @@ hl.config( {
         key_press_enables_dpms = true,
     },
     xwayland = {
-        force_zero_scaling = false
+
+        force_zero_scaling = true
     }
 
 } )

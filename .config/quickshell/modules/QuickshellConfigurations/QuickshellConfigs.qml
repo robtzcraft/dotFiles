@@ -18,7 +18,10 @@ FloatingWindow {
     implicitHeight: 600
     minimumSize: "900x600"
     color: "transparent"
+
     Behavior on color { ColorAnimation { duration: 200 } }
+
+    property string focusWindow: "Wifi"
 
     RowLayout {
 
@@ -29,11 +32,12 @@ FloatingWindow {
         Sidebar {
             id: configPanelSidebar
             parentHeight: root.height
+
+            onSelected: ( name ) => root.focusWindow = name
         }
 
-
         Viewport {
-
+            focusWindow: root.focusWindow
         }
 
 

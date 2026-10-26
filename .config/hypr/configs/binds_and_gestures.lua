@@ -27,6 +27,9 @@ hl.bind( 'SUPER + W', hl.dsp.exec_cmd( terminalEmulator ), { description = 'Open
 hl.bind( 'SUPER + C', hl.dsp.window.close( hl.get_active_window( ) ) )
 hl.bind( 'SUPER + V', hl.dsp.window.float( on, hl.get_active_window( ) ) )
 hl.bind( 'SUPER + L', hl.dsp.exec_cmd( 'loginctl lock-session' ) )
+-- SUPER + SHIFT + S = Screenshot
+hl.bind( 'SUPER + SHIFT + S', hl.dsp.exec_cmd( 'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png && wl-copy < ~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png' ) )
+hl.bind( 'SUPER + mouse:272', hl.dsp.window.drag( ), { mouse = true } )
 
 -- Fn Keys
 --- Audio

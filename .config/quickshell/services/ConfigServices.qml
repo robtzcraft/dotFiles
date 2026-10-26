@@ -6,17 +6,17 @@ import Quickshell.Io
 
 Singleton {
 
-    property url homeURL: `${Quickshell.env("HOME")}`
+    property url homeURL: `${ Quickshell.env( "HOME" ) }`
 
     FileView {
         id: coreJsonFile
         path: `${homeURL}/config.json`
         blockLoading: true
         watchChanges: true
-        onFileChanged: this.reload()
+        onFileChanged: this.reload( )
     }
 
-    readonly property var jsonData: JSON.parse(coreJsonFile.text())
+    readonly property var jsonData: JSON.parse( coreJsonFile.text( ) )
 
     FileView {
         id: colorSchemeJsonFile

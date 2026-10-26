@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/robtz/Documents/dotFiles/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

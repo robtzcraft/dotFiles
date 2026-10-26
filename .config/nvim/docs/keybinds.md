@@ -5,4 +5,4 @@
 
 - `CTRL + S`: Save ( normal )
 - `CTRL + Q`: Quit current buffer ( normal )
-- ``
+- `CTRL + A`: Focus file explorer

@@ -1,42 +1,34 @@
--- lazy.nvim
-local lazypath = vim.fn.stdpath( "data" ) .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat( lazypath ) then
-    vim.fn.system( {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    } )
-end
-vim.opt.rtp:prepend( lazypath )
 
--- Plugins
-local plugins = {
+vim.pack.add( {
 
-    -- UI
-    'ellisonleao/gruvbox.nvim',
-    'nvim-lualine/lualine.nvim',
-    'nvim-tree/nvim-tree.lua',
-    'nvim-tree/nvim-web-devicons',
-    'romgrk/barbar.nvim',
+    { src = 'https://github.com/ellisonleao/gruvbox.nvim' },
+    { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+    { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
+    { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
+    { src = 'https://github.com/romgrk/barbar.nvim' },
 
-    -- LSP Stuff
-    -- LSP stuff
-  'neovim/nvim-lspconfig',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
-  'saadparwaiz1/cmp_luasnip',
-    -- Language Servers handling
-    'mason-org/mason.nvim',
-    'mason-org/mason-lspconfig.nvim',
-}
+    { src = 'https://github.com/mason-org/mason.nvim' },
+    { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 
--- Options
-local opts = { }
+    -- LSP
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/saghen/blink.lib' },
+    { src = 'https://github.com/saghen/blink.cmp' },
+--    { src = 'https://github.com/hrsh7th/nvim-cmp' },
+--    { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+    { src = 'https://github.com/rafamadriz/friendly-snippets' },
+    { src = 'https://github.com/windwp/nvim-autopairs' },
+--    { src = 'https://github.com/saadparwaiz1/cmp_luasnip' }
 
--- lazy startup function
-require( 'lazy' ).setup( plugins, opts )
+} )
+
+require( 'plugins.gruvbox' )
+require( 'plugins.lualine' )
+require( 'plugins.nvimtree' )
+require( 'plugins.barbar' )
+
+require( 'plugins.lsp.mason' )
+require( 'plugins.lsp.blink' )
+require( 'plugins.lsp.lspconfig' )
+require( 'plugins.lsp.autopairs' )
+
