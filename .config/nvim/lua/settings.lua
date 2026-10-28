@@ -1,4 +1,46 @@
 
+-- Master configuration load
+
+-- Load ~/config.json file
+local masterConfigPath = vim.fn.expand( '~/config.json' )
+
+local masterConfig, err = io.open( masterConfigPath, 'r' )
+if not masterConfig then
+    vim.notify( 'File ' .. tostring( err ), vim.log.levels.ERROR )
+    return
+end
+
+local masterConfigContent = masterConfig:read( '*a' )
+masterConfig.close( masterConfig )
+
+local sucess, data = pcall( vim.json.decode, masterConfigContent )
+
+if not sucess then
+    vim.notify( 'Filed to read master configuration file' .. tostring( data ), vim.log.levels.ERROR )
+    return
+end
+
+
+
+
+------------------------------------------------------
+--  Setting colorscheme according to ~/config.json  --
+------------------------------------------------------
+
+local colorscheme = data.ui.colorscheme
+
+-- Theme selection
+-- nord.nvim doesn't have light theme
+if string.find( tostring( colorscheme ), 'nord', 1, true ) then
+    require( 'plugins.nord' )
+    vim.cmd.colorscheme( 'nord' )
+end
+if string.find( tostring( colorscheme ), 'gruvbox', 1, true ) then
+    require( 'plugins.gruvbox' )
+    vim.cmd.colorscheme( "gruvbox" )
+end
+
+-- IDE
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
@@ -97,4 +139,11 @@ vim.api.nvim_create_user_command(
             end, my_params )
         end,
     }
+)
+vim.api.nvim_create_user_command(
+    'ReloadSettings',
+    function( opts )
+        vim.cmd( "source ~/.config/nvim/lua/settings.lua" )
+    end,
+    { desc = 'Reload colorcheme' }
 )

@@ -1,5 +1,14 @@
+
+# Folders
 plugin/*
 nvim/test_files/
+.vscode/
 
-a.out
+
+# cache and build files
+build/
+.config/weasel-shell/.cache/
+.config/weasel-shell/build/
+
+*.out
 CHANGELOG.md

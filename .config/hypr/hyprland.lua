@@ -1,4 +1,9 @@
 
+---------------------------------
+--   Robt'z Hyprland Configs   --
+--  github.com/robtz/dotFiles  -- 
+---------------------------------
+
 require( "./configs/variables" )
 require( "./configs/base" )
 -- require( "./configs/keybinds" )

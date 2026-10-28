@@ -2,6 +2,7 @@
 vim.pack.add( {
 
     { src = 'https://github.com/ellisonleao/gruvbox.nvim' },
+    { src = 'https://github.com/shaunsingh/nord.nvim' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
     { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
@@ -22,7 +23,7 @@ vim.pack.add( {
 
 } )
 
-require( 'plugins.gruvbox' )
+-- Theme
 require( 'plugins.lualine' )
 require( 'plugins.nvimtree' )
 require( 'plugins.barbar' )
