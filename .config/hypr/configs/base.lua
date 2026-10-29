@@ -1,5 +1,5 @@
 
---  Necessary changes
+--  Pending changes
 --      Change cursor size to 22px
 
 -- local json = require( '/home/robtz/Documents/dotFiles/src/LuaModules/json.lua' )
