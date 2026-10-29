@@ -57,14 +57,14 @@
         },
         "wallpaper": {
             "path": "~/Pictures/Wallpapers/",
-            "wallpaperSelected": "cottage.jpg",
+            "wallpaperSelected": "splash002.jpg",
             "defaultWallpaper": "default.png"
         }
     },
     "defaultApps": {
         "terminal": "kitty",
         "browser": "firefox",
-        "launcher": ""
+        "launcher": "weasel-den"
     },
     "quickshell": {
         "ui_config": {
