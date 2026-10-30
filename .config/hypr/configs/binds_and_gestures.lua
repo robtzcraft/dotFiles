@@ -53,5 +53,13 @@ hl.bind( 'SUPER + 3', hl.dsp.focus( { workspace = '3' } ) )
 hl.bind( 'SUPER + 4', hl.dsp.focus( { workspace = '4' } ) )
 hl.bind( 'SUPER + 5', hl.dsp.focus( { workspace = '5' } ) )
 
+-- Move focused window to selected workspace
+hl.bind( 'SUPER + SHIFT + 1', hl.dsp.window.move( { workspace = 1, follow = true } ) )
+hl.bind( 'SUPER + SHIFT + 2', hl.dsp.window.move( { workspace = 2, follow = true } ) )
+hl.bind( 'SUPER + SHIFT + 3', hl.dsp.window.move( { workspace = 3, follow = true } ) )
+hl.bind( 'SUPER + SHIFT + 4', hl.dsp.window.move( { workspace = 4, follow = true } ) )
+hl.bind( 'SUPER + SHIFT + 5', hl.dsp.window.move( { workspace = 5, follow = true } ) )
+hl.bind( 'SUPER + SHIFT + 6', hl.dsp.window.move( { workspace = 6, follow = true } ) )
+
 -- Mouse bindings
 hl.gesture( { fingers = 3, direction = 'horizontal', action = 'workspace' } )
