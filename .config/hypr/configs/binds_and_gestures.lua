@@ -25,7 +25,7 @@ local terminalEmulator = 'kitty'
 hl.bind( 'SUPER + E', hl.dsp.exec_cmd( appLauncher ), { description = 'Open app selector' } )
 hl.bind( 'SUPER + W', hl.dsp.exec_cmd( terminalEmulator ), { description = 'Open default terminal' } )
 hl.bind( 'SUPER + C', hl.dsp.window.close( hl.get_active_window( ) ) )
-hl.bind( 'SUPER + V', hl.dsp.window.float( on, hl.get_active_window( ) ) )
+hl.bind( 'SUPER + V', hl.dsp.window.float( { action = 'toggle' } ) )
 hl.bind( 'SUPER + L', hl.dsp.exec_cmd( 'loginctl lock-session' ) )
 -- SUPER + SHIFT + S = Screenshot
 hl.bind( 'SUPER + SHIFT + S', hl.dsp.exec_cmd( 'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png && wl-copy < ~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png' ) )
