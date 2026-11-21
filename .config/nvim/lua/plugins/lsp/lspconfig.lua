@@ -1,9 +1,8 @@
 
 local capabilities = require( 'blink.cmp' ).get_lsp_capabilities( )
 
-local servers = { 'lua_ls', 'pyright', 'ts_ls', 'clangd' }
-local diagnosticIcons = { error = ' ', warning = ' ', hint = ' ', info = ' ' }
--- local diagnosticIcons = { error = ' ', warning = ' ', hint = '󰛨 ', info = ' ' }
+local servers = { 'lua_ls', 'pyright', 'ts_ls', 'clangd', 'cmake', 'bashls' }
+local diagnosticIcons = { Error = ' ', Warning = ' ', Hint = '󰛨 ', Info = ' ' }     -- Custom Icon:  
 
 for _, server in ipairs( servers ) do
     vim.lsp.config( server , {
@@ -28,17 +27,15 @@ vim.diagnostic.config( {
     },
     signs = {
         text = {
-
-            [ vim.diagnostic.severity.ERROR ] = diagnosticIcons.error,
-            [ vim.diagnostic.severity.WARN ] = diagnosticIcons.warning,
-            [ vim.diagnostic.severity.HINT ] = diagnosticIcons.hint,
-            [ vim.diagnostic.severity.INFO ] = diagnosticIcons.info,
+            [ vim.diagnostic.severity.ERROR ] = diagnosticIcons.Error,
+            [ vim.diagnostic.severity.WARN ] = diagnosticIcons.Warning,
+            [ vim.diagnostic.severity.HINT ] = diagnosticIcons.Hint,
+            [ vim.diagnostic.severity.INFO ] = diagnosticIcons.Info,
         }
     }
 } )
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
+for type, icon in pairs( diagnosticIcons ) do
     local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    vim.fn.sign_define( hl, { text = icon, texthl = hl, numhl = hl } )
 end

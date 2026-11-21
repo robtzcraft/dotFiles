@@ -2,13 +2,20 @@
 require( 'mason' ).setup( {
     ui = {
         icons = {
-            package_installed = '',
-            package_pending = '󰥔',
-            package_uninstalled = '',
+            package_installed = ' ',
+            package_pending = '󰥔 ',
+            package_uninstalled = ' ',
         },
     },
 } )
 
 require( 'mason-lspconfig' ).setup( {
-    ensure_installed = { 'lua_ls', 'pyright', 'ts_ls', 'clangd' },
+    ensure_installed = {
+        'lua_ls',
+        'pyright',
+        'ts_ls',
+        'clangd',
+        'cmake',
+        'bashls'
+    },
 } )
